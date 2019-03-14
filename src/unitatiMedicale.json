@@ -1,0 +1,18 @@
+{
+  "unitatiMedicale": [
+    {
+      "nume": "Regina Maria",
+      "tip": "policlinica",
+      "locatie": "Dorobantilor, Cluj",
+      "sigla": "sigla"
+    },
+    {"nume": "Regina Maria",
+      "tip": "policlinica",
+      "locatie": "Slatina",
+      "sigla": "sigla"},
+    {"nume": "Spitalul Euroclinic",
+      "tip": "spital",
+      "locatie": "Bucuresti",
+      "sigla": "sigla"}
+  ]
+}

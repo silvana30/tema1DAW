@@ -3,11 +3,11 @@ import Navbar from "./Navbar";
 import Jumbotron from "./Jumbotron";
 import Page from "./Page";
 // import * as ReactDOM from "react-router-dom";
-class Theme extends React.Component {
+class Medici extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 'home',
+            currentPage: 'medici',
             brand: 'ReactStrap'
         };
     };
@@ -28,26 +28,21 @@ class Theme extends React.Component {
         return (
             <div>
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
-                {/*<Jumbotron currentPage={currentPage} jumboTitle={jumboTitle} jumboText={jumboText} jumboBtn={jumboBtn} changeBrand={this.handleChangeBrand}/>*/}
                 <Page currentPage={currentPage} />
             </div>
         )
     }
 }
 
-Theme.propTypes = {
+Medici.propTypes = {
     // name: React.PropTypes.string
 };
 
-Theme.defaultProps = {
-    jumboTitle: 'Hello World!',
+Medici.defaultProps = {
+    jumboTitle: 'seruuuuus!',
     jumboText: 'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.',
     jumboBtn: 'Learn React'
 };
 
-// ReactDOM.render(
-//     <Theme />,
-//     document.getElementById('root')
-// );
 
-export default Theme;
+export default  Medici ;

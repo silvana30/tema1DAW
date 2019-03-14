@@ -1,25 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+// import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import * as ReactDOM from "react-dom";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Navbar from "./Navbar.js";
-import Jumbotron from "./Jumbotron.js";
-import Page from "./Page.js";
+// import Navbar from "./Navbar.js";
+// import Jumbotron from "./Jumbotron.js";
+// import Page from "./Page.js";
+import Theme from "./Theme.js";
+import Medici from "./Medici.js";
+import UnitatiMedicale from "./UnitatiMedicale.js";
+
+
 class App extends Component {
 
-  render() {
+    render() {
 
-    return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Theme}/>
-        </Switch>
-      </Router>
-    );
-  }
+        return (
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Theme}/>
+                    <Route path="/medici" component={Medici}/>
+                    <Route path="/unitatiMedicale" component={UnitatiMedicale}/>
+                </Switch>
+            </Router>
+        );
+    }
 }
+
 // class Navbar extends React.Component {
 //   change(page) {
 //     this.props.change(page);
@@ -86,51 +94,51 @@ class App extends Component {
 //     )
 //   }
 // }
-
-class Theme extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPage: 'home',
-      brand: 'ReactStrap'
-    };
-  };
-  handleChange = (page) => {
-    this.setState({
-      currentPage: page,
-      brand: 'ReactStrap'
-    });
-  };
-  handleChangeBrand = (name) => {
-    this.setState({
-      brand: name
-    });
-  };
-  render() {
-    var { jumboTitle, jumboText, jumboBtn } = this.props,
-        { brand, currentPage } = this.state;
-    return (
-        <div>
-          <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
-          <Jumbotron currentPage={currentPage} jumboTitle={jumboTitle} jumboText={jumboText} jumboBtn={jumboBtn} changeBrand={this.handleChangeBrand}/>
-          <Page currentPage={currentPage} />
-        </div>
-    )
-  }
-}
-
-Theme.propTypes = {
-  // name: React.PropTypes.string
-};
-
-Theme.defaultProps = {
-  jumboTitle: 'Hello World!',
-  jumboText: 'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.',
-  jumboBtn: 'Learn React'
-};
+//
+// class Theme extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       currentPage: 'home',
+//       brand: 'ReactStrap'
+//     };
+//   };
+//   handleChange = (page) => {
+//     this.setState({
+//       currentPage: page,
+//       brand: 'ReactStrap'
+//     });
+//   };
+//   handleChangeBrand = (name) => {
+//     this.setState({
+//       brand: name
+//     });
+//   };
+//   render() {
+//     var { jumboTitle, jumboText, jumboBtn } = this.props,
+//         { brand, currentPage } = this.state;
+//     return (
+//         <div>
+//           <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
+//           <Jumbotron currentPage={currentPage} jumboTitle={jumboTitle} jumboText={jumboText} jumboBtn={jumboBtn} changeBrand={this.handleChangeBrand}/>
+//           <Page currentPage={currentPage} />
+//         </div>
+//     )
+//   }
+// }
+//
+// Theme.propTypes = {
+//   // name: React.PropTypes.string
+// };
+//
+// Theme.defaultProps = {
+//   jumboTitle: 'Hello World!',
+//   jumboText: 'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.',
+//   jumboBtn: 'Learn React'
+// };
 
 ReactDOM.render(
-    <Theme />,
+    <Theme/>,
     document.getElementById('root')
 );
 export default App;

@@ -41,3 +41,11 @@
 .jumbotron {
   background-color: #e7e7e7;
 }
+
+#hospital-box{
+  border: #282c34;
+  border: solid;
+  width: 30vw;
+  padding: 10px;
+  margin: 30px;
+}
