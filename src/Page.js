@@ -15,9 +15,9 @@ class Page extends React.Component {
                                 Home
                             </div>;
 
-                        case 'medici':
-                            // return <MyTable param={medici}/>;
-                            return <div> medici </div>;
+                        // case 'medici':
+                        //     // return <MyTable param={medici}/>;
+                        //     return <div> medici </div>;
 
                         case 'unitati medicale':
                             // return <MyTable param={locatii}/>;

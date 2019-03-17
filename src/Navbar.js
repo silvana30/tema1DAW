@@ -17,7 +17,7 @@ class Navbar extends React.Component {
         return (
             <nav className='navbar navbar-default'>
                 <div className='navbar-header'>
-                    <a className='navbar-brand' href='/'>Acasa</a>
+                   <a className='navbar-brand' href='/'> <i className="fa fa-home"></i>  Acasa</a>
                     <a className='navbar-brand' href='/unitatiMedicale'>Unitati medicale</a>
                     <a className='navbar-brand' href='/medici'>Medici</a>
 

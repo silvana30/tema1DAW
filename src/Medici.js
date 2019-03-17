@@ -2,6 +2,8 @@ import * as React from "react";
 import Navbar from "./Navbar";
 import Jumbotron from "./Jumbotron";
 import Page from "./Page";
+import Item from "./UnitatiMedicale";
+import Medic from "./Medic";
 // import * as ReactDOM from "react-router-dom";
 class Medici extends React.Component {
     constructor(props) {
@@ -25,24 +27,44 @@ class Medici extends React.Component {
     render() {
         var { jumboTitle, jumboText, jumboBtn } = this.props,
             { brand, currentPage } = this.state;
+        var hospitals = require('./unitatiMedicale.json');
+
         return (
             <div>
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
-                <Page currentPage={currentPage} />
+                {/*<Page currentPage={currentPage} />*/}
+                <div className={"med-units"}>
+
+                    {hospitals.unitatiMedicale.map((element, index) => {
+                        return(
+                            <div key={index}>
+                                {
+                                    element.medici.map((elem,ind)=>
+                                    {
+                                        return (
+                                            <Medic key={ind}
+                                                   nume={elem.nume}
+                                                   pozaProfil={elem.pozaProfil}
+                                                   specializare={elem.specializare}
+                                                   anAbsolvire={elem.anAbsolvire}
+                                            />
+                                        );
+                                    })
+                                }
+                            </div>
+                        )
+
+
+
+                        }
+                    )}
+                </div>
             </div>
         )
     }
 }
 
-Medici.propTypes = {
-    // name: React.PropTypes.string
-};
 
-Medici.defaultProps = {
-    jumboTitle: 'seruuuuus!',
-    jumboText: 'This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.',
-    jumboBtn: 'Learn React'
-};
 
 
 export default  Medici ;

@@ -5,6 +5,9 @@ import Page from "./Page";
 import * as ReactDOM from "react-router-dom";
 
 import Item from "./Item";
+import {
+    CardColumns
+} from 'reactstrap';
 
 
 class UnitatiMedicale extends React.Component {
@@ -43,21 +46,22 @@ class UnitatiMedicale extends React.Component {
         return (
             <div>
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
-                <Page currentPage={currentPage} />
+                {/*<Page currentPage={currentPage}/>*/}
+                <div className={"med-units"}>
 
-
-        {hospitals.unitatiMedicale.map((element, index) => {
-                return (<div>
-                    <Item key={index}
-                          nume={element.nume}
-                    tip={element.tip}
-                    locatie={element.locatie}
-                    sigla={element.sigla}/>
-                </div>);
-            }
-        )}
+                    {hospitals.unitatiMedicale.map((element, index) => {
+                            return (
+                                <Item key={index}
+                                      nume={element.nume}
+                                      tip={element.tip}
+                                      locatie={element.locatie}
+                                      sigla={element.sigla}/>
+                            );
+                        }
+                    )}
+                </div>
             </div>
-    )
+        )
     }
 }
 

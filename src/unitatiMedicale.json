@@ -4,15 +4,79 @@
       "nume": "Regina Maria",
       "tip": "policlinica",
       "locatie": "Dorobantilor, Cluj",
-      "sigla": "sigla"
+      "sigla": "https://7card.ro/wp-content/uploads/2014/05/logo-clinica-regina-maria.png",
+      "medici": [
+        {
+          "nume": "Pop Vasile",
+          "specializare": "CARDIOLOGIE",
+          "anAbsolvire": 2009,
+          "pozaProfil": "https://hcplive.s3.amazonaws.com/v1_media/_image/happydoctor.jpg"
+        },
+        {
+          "nume": "Pop Ion",
+          "specializare": "ortopedie",
+          "anAbsolvire": 2001,
+          "pozaProfil": "https://myblue.bluecrossma.com/sites/g/files/csphws1086/files/inline-images/Doctor%20Image%20Desktop.png"
+        },
+        {
+          "nume": "Safta Dana",
+          "specializare": "anestezie si terapie intensiva",
+          "anAbsolvire": 2011,
+          "pozaProfil": "http://www.apollonion.com/assets/image/imagesplashdoc/women-img0001.png"
+        }
+      ]
     },
-    {"nume": "Regina Maria",
+    {
+      "nume": "Regina Maria",
       "tip": "policlinica",
       "locatie": "Slatina",
-      "sigla": "sigla"},
-    {"nume": "Spitalul Euroclinic",
-      "tip": "spital",
+      "sigla": "https://7card.ro/wp-content/uploads/2014/05/logo-clinica-regina-maria.png",
+      "medici": [
+        {
+          "nume": "Copaescu Catalin",
+          "specializare": "chirurgie generala",
+          "anAbsolvire": 2013,
+          "pozaProfil": "http://www.chapelhillfamilydoctors.com.au/images/doctor-img2.png"
+        },
+        {
+          "nume": "Rahimian Hadi",
+          "specializare": "obstretica-ginecologie",
+          "anAbsolvire": 2012,
+          "pozaProfil": "https://image.freepik.com/darmowe-zdjecie/lekarz-u%C5%9Bmiecha-z-stetoskop_1154-36.jpg"
+        },
+        {
+          "nume": "Surlea Veronica",
+          "specializare": "pneumologie",
+          "anAbsolvire": 2011,
+          "pozaProfil": "https://png.pngtree.com/element_origin_min_pic/16/10/16/2158038687c0171.jpg"
+        }
+      ]
+    },
+    {
+      "nume": "Medlife",
+      "tip": "hyperclinica",
       "locatie": "Bucuresti",
-      "sigla": "sigla"}
+      "sigla": "http://furniturevision.ro/wp-content/uploads/2016/04/medlife-logo-2.jpg",
+      "medici": [
+        {
+          "nume": "Scheider Mihaela",
+          "specializare": "neonatologie",
+          "anAbsolvire": 2005,
+          "pozaProfil": "https://png.pngtree.com/element_origin_min_pic/17/04/20/8c1a99a3f4a1a013014f920ac62d6c7b.jpg"
+        },
+        {
+          "nume": "Ulmeanu Dan",
+          "specializare": "Chirurgie generala",
+          "anAbsolvire": 2000,
+          "pozaProfil": "http://any-type-tour.com/Lviv/MEDIC/img/man.png"
+        },
+        {
+          "nume": "Oprisiu Carmen",
+          "specializare": "pediatrie",
+          "anAbsolvire": 2011,
+          "pozaProfil": "https://www.medstar2000.ro/wp-content/uploads/2015/12/doctor-writing-1.png"
+        }
+      ]
+    }
   ]
 }
