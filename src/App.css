@@ -59,18 +59,21 @@
     background-color: #e7e7e7;
 }
 
-#hospital-box {
+.hospital-box {
     /*border: solid;*/
     width: 20vw;
-    height: 50vh;
+    height: 48vh;
     padding: 10px;
     margin: 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
 
+}
+#doc{
+    height: 42vh;
+}
 #btn-details {
     /*width: 318vw;*/
     /*height: 180vh;*/
@@ -85,20 +88,36 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+
+    background: white;
+    /* width: 80%; */
+    margin-left: 10%;
+    margin-right: 10%;
+    min-height: -webkit-fill-available;
 }
 
 .card-subtitle {
     text-transform: uppercase;
 }
 
-.img-card {
+.img-wrapper {
     width: 19vw;
     height: 26vh;
     display: flex;
+    position: relative;
 }
 
+.img-overlay {
+    background: #ffffffaa;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+}
 .card-img-top {
     object-fit: contain;
+    height: 175px;
 }
 .carousel-item{
     height: 92vh;
@@ -120,3 +139,24 @@
     display: contents;
 }
 
+#lang,#lang2{display: contents;}
+
+.doctors{
+    background: #d3d3d352;
+}
+
+#hospitals{
+    background: url("https://images.pexels.com/photos/943630/pexels-photo-943630.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#card-h{
+    opacity: 0.8;
+    border-radius: 1em;
+
+}

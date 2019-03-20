@@ -14,7 +14,9 @@ const en={
     pneumologie:"pulmonology",
     neonatologie:"neonatology",
     pediatrie:"pediatrics",
-    anAbsolvire:"Graduation Year"
+    anAbsolvire:"Graduation Year",
+    team:"Our team",
+    description:"Their tireless training and involvement, the attention paid to each patient and the medical performance they have achieved are guarantees of the excellence we are promoting."
 };
 
 const ro={
@@ -31,7 +33,9 @@ const ro={
     pneumologie:"pneumologie",
     neonatologie:"neonatologie",
     pediatrie:"pediatrie",
-    anAbsolvire: "Anul absolvirii"
+    anAbsolvire: "Anul absolvirii",
+    team:"Echipa noastră",
+    description: "Pregătirea şi implicarea lor neobosită, atenţia acordată fiecărui pacient şi performanţele medicale pe care le-au atins sunt garanţii ale excelenţei pe care o promovăm."
 
 }
 

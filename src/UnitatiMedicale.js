@@ -51,10 +51,10 @@ class UnitatiMedicale extends React.Component {
 
         }
         return (
-            <div>
+            <div  class={"doctors"}>
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
                 {/*<Page currentPage={currentPage}/>*/}
-                <div className={"med-units"}>
+                <div className={"med-units"} id={"hospitals"}>
 
                     {hospitals.unitatiMedicale.map((element, index) => {
                             return (

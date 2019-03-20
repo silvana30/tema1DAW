@@ -2,7 +2,8 @@ import * as React from "react";
 import Navbar from "./Navbar";
 
 import Medic from "./Medic";
-
+import Jumbotron from "./Jumbotron";
+import t from './locale';
 class Detalii extends React.Component {
     constructor(props) {
         super(props);
@@ -32,9 +33,11 @@ class Detalii extends React.Component {
         console.log("medici ", JSON.stringify(medici));
         const {data} = this.props.location;
         return (
-            <div>
+            <div class={"doctors"}>
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
                 {/*<Page currentPage={currentPage} />*/}
+                <Jumbotron  jumboTitle={t("team")} jumboText={t("description")} >
+                </Jumbotron>
                 <div className={"med-units"}>
 
 
@@ -51,6 +54,7 @@ class Detalii extends React.Component {
                         })
                     }
                 </div>
+
 
             </div>
         )

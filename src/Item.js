@@ -35,7 +35,7 @@ class Item extends React.Component {
 
         return <div>
 
-            <Card id="hospital-box">
+            <Card className="hospital-box" id={"card-h"}>
                 <div className={"img-card"}>
                     <CardImg top width="100%" height="100%" src={this.props.sigla} alt="Card image cap"/>
                 </div>

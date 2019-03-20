@@ -11,7 +11,7 @@ class Jumbotron extends React.Component {
                 <div className="container">
                     <h1>{jumboTitle}</h1>
                     <p>{jumboText}</p>
-                    <p><a className="btn btn-primary btn-lg" href="#" role="button" onClick={this.changeBrand.bind(this,'ReactJS')}>{jumboBtn}</a></p>
+                    {/*<p><a className="btn btn-primary btn-lg" href="#" role="button" onClick={this.changeBrand.bind(this,'ReactJS')}>{jumboBtn}</a></p>*/}
                 </div>
             </div>
         )

@@ -30,7 +30,7 @@ class Medici extends React.Component {
         var hospitals = require('./unitatiMedicale.json');
 
         return (
-            <div>
+            <div class={"doctors"}>
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
                 {/*<Page currentPage={currentPage} />*/}
                 <div className={"med-units"}>

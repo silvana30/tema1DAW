@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Button} from "reactstrap";
+import {Button, CardImg} from "reactstrap";
 
 import Cookies from 'universal-cookie';
 import UnitatiMedicale from "./Page";
@@ -47,8 +47,8 @@ class Navbar extends React.Component {
                         <a className='navbar-brand' href='/medici'><i className={"fa fa-user-md"}></i> {t('doctors')}</a>
                     </div>
                     <div>
-                        <Button color="secondary" onClick={setRO}>RO</Button>{' '}
-                        <Button color="secondary" onClick={setEN}>EN</Button>{' '}
+                        <Button color="secondary" id={"lang"} onClick={setRO}><img  src="https://img.icons8.com/color/48/000000/romania.png"/></Button>{' '}
+                        <Button color="secondary" id={"lang2"} onClick={setEN}><img src="https://img.icons8.com/color/48/000000/great-britain.png"/></Button>{' '}
                     </div>
                     {/*<button*/}
                     {/*aria-expanded='false'*/}
