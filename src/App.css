@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+    background-color: red;
 }
 
 .App-logo {
@@ -18,7 +19,10 @@
     font-size: calc(10px + 2vmin);
     color: white;
 }
-
+.navbar-header{
+    display: contents;
+    justify-content: space-between;
+}
 .App-link {
     color: #61dafb;
 }
@@ -67,9 +71,14 @@
     justify-content: space-between;
 }
 
-.btn-details {
-    width: 318vw;
-    height: 180vh;
+#btn-details {
+    /*width: 318vw;*/
+    /*height: 180vh;*/
+    background-color: darkred;
+}
+
+#btn-details:hover{
+    background-color: dimgrey;
 }
 
 .med-units {
@@ -91,3 +100,23 @@
 .card-img-top {
     object-fit: contain;
 }
+.carousel-item{
+    height: 92vh;
+    display: flex;
+}
+#carousel-wrapper {
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 3%;
+}
+
+#home {
+    margin-left: 70px;
+
+    margin-right: 70px;
+
+    /*height: 100vh;*/
+    /*width: auto;*/
+    display: contents;
+}
+

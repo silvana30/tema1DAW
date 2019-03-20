@@ -2,6 +2,8 @@ import * as React from "react";
 import Navbar from "./Navbar";
 import Jumbotron from "./Jumbotron";
 import Page from "./Page";
+import Example from "./Example";
+
 // import * as ReactDOM from "react-router-dom";
 class Theme extends React.Component {
     constructor(props) {
@@ -11,6 +13,7 @@ class Theme extends React.Component {
             brand: 'ReactStrap'
         };
     };
+
     handleChange = (page) => {
         this.setState({
             currentPage: page,
@@ -22,14 +25,21 @@ class Theme extends React.Component {
             brand: name
         });
     };
+
     render() {
-        var { jumboTitle, jumboText, jumboBtn } = this.props,
-            { brand, currentPage } = this.state;
+        var {jumboTitle, jumboText, jumboBtn} = this.props,
+            {brand, currentPage} = this.state;
         return (
-            <div>
+            <div >
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
-                {/*<Jumbotron currentPage={currentPage} jumboTitle={jumboTitle} jumboText={jumboText} jumboBtn={jumboBtn} changeBrand={this.handleChangeBrand}/>*/}
-                <Page currentPage={currentPage} />
+                {/*<Jumbotron currentPage={currentPage} jumboTitle={jumboTitle} jumboText={jumboText} jumboBtn={jumboBtn} changeBrand={this.handleChangeBrand}>*/}
+                {/*<Page currentPage={currentPage} />*/}
+
+                <div id={"home"}>
+                    <Example/>
+                </div>
+
+
             </div>
         )
     }

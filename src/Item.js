@@ -1,32 +1,57 @@
 import React from 'react'
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button
+} from 'reactstrap';
 import CardColumns from "reactstrap/es/CardColumns";
-const Item = (props) => {
+import {Redirect, withRouter} from "react-router-dom";
+import Detalii from "./Detalii";
+import t from './locale';
 
-    return <div>
+class Item extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    // static contextTypes = {
+    //     router: React.PropTypes.object
+    // }
+    handleClick = () => {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+
+    showDetails(medici) {
+        console.log(JSON.stringify(medici));
+        this.props.history.push({ //browserHistory.push should also work here
+            pathname: "/detalii",
+            medici: medici
+        });
+    }
+
+    render() {
+
+
+        return <div>
 
             <Card id="hospital-box">
                 <div className={"img-card"}>
-                <CardImg top width="100%" height="100%" src={props.sigla} alt="Card image cap" />
+                    <CardImg top width="100%" height="100%" src={this.props.sigla} alt="Card image cap"/>
                 </div>
                 <div>
-                <CardBody>
-                    <CardTitle><b>{props.nume}</b></CardTitle>
-                    <CardSubtitle>{props.tip}</CardSubtitle>
-                    <CardText>{props.locatie}</CardText>
-                    <Button class="btn-details">Detalii</Button>
-                </CardBody>
+                    <CardBody>
+                        <CardTitle><b>{this.props.nume}</b></CardTitle>
+                        <CardSubtitle>{t(this.props.tip)}</CardSubtitle>
+                        <CardText>{this.props.locatie}</CardText>
+                        <Button id="btn-details" onClick={() => this.showDetails(this.props.medici)}>Detalii</Button>
+                    </CardBody>
                 </div>
             </Card>
 
+        </div>
+    }
 
+}
 
-        {/*<input type="hidden" name="id" value={props.id}/>*/}
-        {/*{props.name} {props.category} {props.price} {props.stock}*/}
-        {/*<img src={props.picture} height="100" width="100"/>*/}
-        {/*<input type="button" onClick={() => props.buyItemHandler({...props})} value="Buy!"/>*/}
-    </div>
-};
-
-export default Item
+export default withRouter(Item)

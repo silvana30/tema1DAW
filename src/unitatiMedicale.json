@@ -1,6 +1,7 @@
 {
   "unitatiMedicale": [
     {
+      "id": 1,
       "nume": "Regina Maria",
       "tip": "policlinica",
       "locatie": "Dorobantilor, Cluj",
@@ -8,7 +9,7 @@
       "medici": [
         {
           "nume": "Pop Vasile",
-          "specializare": "CARDIOLOGIE",
+          "specializare": "cardiologie",
           "anAbsolvire": 2009,
           "pozaProfil": "https://hcplive.s3.amazonaws.com/v1_media/_image/happydoctor.jpg"
         },
@@ -20,13 +21,14 @@
         },
         {
           "nume": "Safta Dana",
-          "specializare": "anestezie si terapie intensiva",
+          "specializare": "anestezie",
           "anAbsolvire": 2011,
           "pozaProfil": "http://www.apollonion.com/assets/image/imagesplashdoc/women-img0001.png"
         }
       ]
     },
     {
+      "id": 2,
       "nume": "Regina Maria",
       "tip": "policlinica",
       "locatie": "Slatina",
@@ -34,13 +36,13 @@
       "medici": [
         {
           "nume": "Copaescu Catalin",
-          "specializare": "chirurgie generala",
+          "specializare": "chirurgie",
           "anAbsolvire": 2013,
           "pozaProfil": "http://www.chapelhillfamilydoctors.com.au/images/doctor-img2.png"
         },
         {
           "nume": "Rahimian Hadi",
-          "specializare": "obstretica-ginecologie",
+          "specializare": "obstreticaGinecologie",
           "anAbsolvire": 2012,
           "pozaProfil": "https://image.freepik.com/darmowe-zdjecie/lekarz-u%C5%9Bmiecha-z-stetoskop_1154-36.jpg"
         },
@@ -53,6 +55,7 @@
       ]
     },
     {
+      "id": 3,
       "nume": "Medlife",
       "tip": "hyperclinica",
       "locatie": "Bucuresti",
@@ -66,7 +69,7 @@
         },
         {
           "nume": "Ulmeanu Dan",
-          "specializare": "Chirurgie generala",
+          "specializare": "chirurgie",
           "anAbsolvire": 2000,
           "pozaProfil": "http://any-type-tour.com/Lviv/MEDIC/img/man.png"
         },

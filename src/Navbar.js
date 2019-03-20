@@ -1,6 +1,28 @@
 import * as React from "react";
+import {Button} from "reactstrap";
 
+import Cookies from 'universal-cookie';
+import UnitatiMedicale from "./Page";
 
+import t from './locale';
+
+// const cookies = new Cookies();
+// cookies.set('language', 'EN');
+// console.log(cookies.get('language'));
+
+function setRO() {
+    // cookies.set('language', 'RO');
+    localStorage.setItem('locale', 'ro');
+    window.location.reload();
+}
+
+function setEN() {
+    console.log("aici");
+    // cookies.set('language', 'EN');
+    localStorage.setItem('locale', 'en');
+
+    window.location.reload();
+}
 
 class Navbar extends React.Component {
     state = {
@@ -8,29 +30,36 @@ class Navbar extends React.Component {
     }
 
     _onToggleNav = () => {
-        this.setState({ navCollapsed: !this.state.navCollapsed })
+        this.setState({navCollapsed: !this.state.navCollapsed})
     }
 
-    render () {
+    render() {
         const {navCollapsed} = this.state
 
         return (
             <nav className='navbar navbar-default'>
                 <div className='navbar-header'>
-                   <a className='navbar-brand' href='/'> <i className="fa fa-home"></i>  Acasa</a>
-                    <a className='navbar-brand' href='/unitatiMedicale'>Unitati medicale</a>
-                    <a className='navbar-brand' href='/medici'>Medici</a>
 
+                    <div>
+                        <a className='navbar-brand' href='/'> <i className="fa fa-home"></i> {t('home')}</a>
+                        <a className='navbar-brand' href='/unitatiMedicale'><i
+                            className={"fa fa-hospital-o"}></i> {t('medUnits')}</a>
+                        <a className='navbar-brand' href='/medici'><i className={"fa fa-user-md"}></i> {t('doctors')}</a>
+                    </div>
+                    <div>
+                        <Button color="secondary" onClick={setRO}>RO</Button>{' '}
+                        <Button color="secondary" onClick={setEN}>EN</Button>{' '}
+                    </div>
                     {/*<button*/}
-                        {/*aria-expanded='false'*/}
-                        {/*className='navbar-toggle collapsed'*/}
-                        {/*onClick={this._onToggleNav}*/}
-                        {/*type='button'*/}
+                    {/*aria-expanded='false'*/}
+                    {/*className='navbar-toggle collapsed'*/}
+                    {/*onClick={this._onToggleNav}*/}
+                    {/*type='button'*/}
                     {/*>*/}
-                        {/*<span className='sr-only'>Toggle navigation</span>*/}
-                        {/*<span className='icon-bar'></span>*/}
-                        {/*<span className='icon-bar'></span>*/}
-                        {/*<span className='icon-bar'></span>*/}
+                    {/*<span className='sr-only'>Toggle navigation</span>*/}
+                    {/*<span className='icon-bar'></span>*/}
+                    {/*<span className='icon-bar'></span>*/}
+                    {/*<span className='icon-bar'></span>*/}
                     {/*</button>*/}
                 </div>
                 <div

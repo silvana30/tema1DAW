@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Theme from "./Theme.js";
 import Medici from "./Medici.js";
 import UnitatiMedicale from "./UnitatiMedicale.js";
+import Detalii from "./Detalii";
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
                     <Route exact path="/" component={Theme}/>
                     <Route path="/medici" component={Medici}/>
                     <Route path="/unitatiMedicale" component={UnitatiMedicale}/>
+                    <Route path="/detalii" component={Detalii}/>
                 </Switch>
             </Router>
         );

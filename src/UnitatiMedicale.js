@@ -3,11 +3,9 @@ import Navbar from "./Navbar";
 import Jumbotron from "./Jumbotron";
 import Page from "./Page";
 import * as ReactDOM from "react-router-dom";
+import t from './locale';
 
 import Item from "./Item";
-import {
-    CardColumns
-} from 'reactstrap';
 
 
 class UnitatiMedicale extends React.Component {
@@ -36,6 +34,10 @@ class UnitatiMedicale extends React.Component {
     getInitialState = () => {
         return {data: this.props.data};
     };
+    // showDetails = (medici) => {
+    //     console.log("ugdsdfgsu");
+    // };
+
 
     render() {
         var {jumboTitle, jumboText, jumboBtn} = this.props,
@@ -43,6 +45,11 @@ class UnitatiMedicale extends React.Component {
         var hospitals = require('./unitatiMedicale.json');
         console.log('hospitals:' + JSON.stringify(hospitals.unitatiMedicale));
 
+        function showDetails(medici) {
+            console.log(medici.nume);
+            console.log("caca");
+
+        }
         return (
             <div>
                 <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
@@ -52,10 +59,13 @@ class UnitatiMedicale extends React.Component {
                     {hospitals.unitatiMedicale.map((element, index) => {
                             return (
                                 <Item key={index}
+                                      id={element.id}
+                                      medici={element.medici}
                                       nume={element.nume}
                                       tip={element.tip}
                                       locatie={element.locatie}
-                                      sigla={element.sigla}/>
+                                      sigla={element.sigla}
+                                      />
                             );
                         }
                     )}
