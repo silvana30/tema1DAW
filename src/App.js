@@ -11,7 +11,9 @@ import Theme from "./Theme.js";
 import Medici from "./Medici.js";
 import UnitatiMedicale from "./UnitatiMedicale.js";
 import Detalii from "./Detalii";
-
+import Login from "./Login";
+import Register from "./Register";
+import Profile from "./Profile";
 
 class App extends Component {
 
@@ -20,10 +22,15 @@ class App extends Component {
         return (
             <Router>
                 <Switch>
+                    <Route path="/login"  component={Login} />
                     <Route exact path="/" component={Theme}/>
+                    <Route path="/register" exact component={Register} />
+
                     <Route path="/medici" component={Medici}/>
                     <Route path="/unitatiMedicale" component={UnitatiMedicale}/>
                     <Route path="/detalii" component={Detalii}/>
+                    <Route path="/profile" component={Profile}/>
+
                 </Switch>
             </Router>
         );

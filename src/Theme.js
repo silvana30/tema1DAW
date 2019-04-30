@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import Jumbotron from "./Jumbotron";
 import Page from "./Page";
 import Example from "./Example";
-
 // import * as ReactDOM from "react-router-dom";
 class Theme extends React.Component {
     constructor(props) {
@@ -38,8 +37,6 @@ class Theme extends React.Component {
                 <div id={"home"}>
                     <Example/>
                 </div>
-
-
             </div>
         )
     }

@@ -46,9 +46,9 @@ class Detalii extends React.Component {
                             return (
                                 <Medic key={ind}
                                        nume={elem.nume}
-                                       pozaProfil={elem.pozaProfil}
+                                       pozaProfil={elem.poza_profil}
                                        specializare={elem.specializare}
-                                       anAbsolvire={elem.anAbsolvire}
+                                       anAbsolvire={elem.an_absolvire}
                                 />
                             );
                         })

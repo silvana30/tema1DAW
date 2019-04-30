@@ -52,7 +52,7 @@
 }
 
 .navbar-brand:hover {
-    color: cadetblue;
+    color: #cccfd3;
 }
 
 .jumbotron {
@@ -158,5 +158,111 @@
 #card-h{
     opacity: 0.8;
     border-radius: 1em;
+
+}
+.carousel-caption h3{
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: black;
+    margin-bottom: 36%;
+    /*font-style: oblique;*/
+}
+
+@media all and (min-width: 480px) {
+    .Login {
+        background: url("https://healthengine.com.au/info/static/aed4e2ce0004766e6b90a0c2e856be3e/a7338/blood-cells.jpg");
+        padding: 60px 0;
+        background-size: cover;
+        height: -webkit-fill-available;
+    }
+
+    .Login Form {
+        background-color: white;
+        opacity: .9;
+        margin: 0 auto;
+        max-width: 320px;
+        -webkit-align-items: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        /*border: solid;*/
+        padding: 3rem;
+        border-radius: .8rem;
+    }
+
+    .Login Button{
+        max-width: 200px;
+        background-color: darkred;
+    }
+
+}
+
+
+@media all and (min-width: 480px) {
+    .Register {
+        background: url("https://healthengine.com.au/info/static/aed4e2ce0004766e6b90a0c2e856be3e/a7338/blood-cells.jpg");
+        padding: 60px 0;
+        background-size: cover;
+        height: -webkit-fill-available;
+    }
+
+    .Register Form {
+        background-color: white;
+        opacity: .9;
+        margin: 0 auto;
+        max-width: 320px;
+        -webkit-align-items: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        /*border: solid;*/
+        padding: 3rem;
+        border-radius: .8rem;
+    }
+
+    .Register Button{
+        max-width: 200px;
+        background-color: darkred;
+    }
+
+}
+
+
+@media all and (min-width: 480px) {
+    .Profile {
+        background: url("https://healthengine.com.au/info/static/aed4e2ce0004766e6b90a0c2e856be3e/a7338/blood-cells.jpg");
+        padding: 60px 0;
+        background-size: cover;
+        height: -webkit-fill-available;
+    }
+
+
+
+}
+
+#profile {
+    background-color: white;
+    opacity: .9;
+    margin: 0 auto;
+    max-width: 320px;
+    -webkit-align-items: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: solid;
+    padding: 3rem;
+    border-radius: .8rem;
+}
+
+#files{
+    visibility: hidden;
+}
+
+#avatar{
+    height: 200px;
 
 }
