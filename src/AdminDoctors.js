@@ -1,19 +1,21 @@
 import * as React from "react";
-import Navbar from "./Navbar";
 
-import Medic from "./Medic";
+import AdminMedic from "./AdminMedic";
+import AdminNavbar from "./AdminNavbar";
+import {Button} from "reactstrap";
 
 // import * as ReactDOM from "react-router-dom";
-class Medici extends React.Component {
+class AdminDoctors extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 'medici',
+            currentPage: 'adminDoctors',
             brand: 'ReactStrap',
-            doctors: {}
+
         };
         this.getDoctors = this.getDoctors.bind(this);
         this.handleReq = this.handleReq.bind(this);
+        this.addDoctor = this.addDoctor.bind(this);
         this.getDoctors();
     };
 
@@ -21,6 +23,11 @@ class Medici extends React.Component {
         this.setState({
             currentPage: page,
             brand: 'ReactStrap',
+        });
+    };
+    handleChangeBrand = (name) => {
+        this.setState({
+            brand: name
         });
     };
 
@@ -34,7 +41,7 @@ class Medici extends React.Component {
     getDoctors() {
         const axios = require('axios');
 
-        axios.get('http://localhost/larapi-master/public/doctors')
+        axios.get('http://localhost:3001/doctors')
             .then(this.handleReq)
             .catch(function (error) {
                 console.log(error);
@@ -42,16 +49,26 @@ class Medici extends React.Component {
 
     }
 
+    addDoctor() {
+        this.props.history.push(
+            {
+                pathname: "/addDoctor"
+            }
+        )
+    }
+
     render() {
         var {jumboTitle, jumboText, jumboBtn} = this.props,
             {brand, currentPage, doctors} = this.state;
         // var hospitals = require('./unitatiMedicale.json');
         console.log("asf", this.state.doctors);
-        if (this.state.doctors.doctors) {
+        if (this.state.doctors) {
             console.log("1111");
             return (
                 <div className={"doctors"}>
-                    <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
+                    <AdminNavbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
+                    <Button onClick={this.addDoctor} className={'btn-danger'}>Add Doctor</Button>
+
                     {/*<Page currentPage={currentPage} />*/}
                     <div className={"med-units"}>
 
@@ -60,13 +77,14 @@ class Medici extends React.Component {
                             // return(
                             //     <div key={index}>
                             //         {
-                            doctors.doctors.map((elem, ind) => {
+                            doctors.map((elem, ind) => {
                                 return (
-                                    <Medic key={ind}
-                                           nume={elem.nume}
-                                           pozaProfil={elem.poza_profil}
-                                           specializare={elem.specializare}
-                                           anAbsolvire={elem.an_absolvire}
+                                    <AdminMedic key={ind}
+                                                id={elem.id}
+                                                nume={elem.nume}
+                                                pozaProfil={elem.poza_profil}
+                                                specializare={elem.specializare}
+                                                anAbsolvire={elem.an_absolvire}
                                     />
                                 );
                             })
@@ -76,7 +94,7 @@ class Medici extends React.Component {
                     </div>
                 </div>
             )
-        }else {
+        } else {
             console.log("222");
             return (<div>Loading data</div>);
         }
@@ -84,4 +102,4 @@ class Medici extends React.Component {
 }
 
 
-export default Medici;
+export default AdminDoctors;

@@ -4,7 +4,7 @@ import {Button, Form, FormGroup} from "reactstrap";
 import Navbar from "./Navbar";
 import Cookies from 'universal-cookie';
 import {withRouter} from "react-router-dom";
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 
 // import "./Login.css";
 class Login extends React.Component {
@@ -17,11 +17,13 @@ class Login extends React.Component {
             password: "",
             currentPage: 'login',
             brand: 'ReactStrap',
-            logged: false
+            logged: false,
+            role: ''
         };
 
 
-        this.handleSubmitResponse=this.handleSubmitResponse.bind(this);
+        this.handleSubmitResponse = this.handleSubmitResponse.bind(this);
+        this.handleReq = this.handleReq.bind(this);
     }
 
 
@@ -39,19 +41,52 @@ class Login extends React.Component {
 
     }
 
-    handleSubmitResponse=function (response) {
-            console.log(response);
-            const cookies = new Cookies();
-            cookies.set('token', response.data.access_token);
-            this.setState({logged:true});
+    getLoggedUser() {
+
+        const axios = require('axios');
+        const cookies = new Cookies();
+        var token = cookies.get('token');
+        axios.get('http://localhost/larapi-master/public/loggedUser', {headers: {Authorization: `Bearer ${token}`}})
+            .then(this.handleReq)
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+    handleSubmitResponse = function (response) {
+        console.log(response);
+        const cookies = new Cookies();
+        cookies.set('token', response.data.access_token);
+        this.setState({logged: true});
+        this.getLoggedUser();
+
+
+
+    };
+
+    handleReq(response) {
+        console.log(response);
+        this.setState({role: response.data.role});
+        console.log("starea curenta: ", this.state);
+        const cookies = new Cookies();
+        cookies.set('role', this.state.role);
+        if (this.state.role === "user") {
             this.props.history.push(
                 {
                     pathname: "/profile"
                 }
             )
+        } else {
+            console.log("serus admine");
+            this.props.history.push(
+                {
+                    pathname: "/admin"
+                }
+            )
+        }
+    }
 
-
-        };
     handleSubmit = event => {
         event.preventDefault();
         const axios = require('axios');
@@ -62,20 +97,6 @@ class Login extends React.Component {
         })
             .then(
                 this.handleSubmitResponse
-
-            //     function (response) {
-            //     console.log(response);
-            //     const cookies = new Cookies();
-            //     cookies.set('token', response.data.access_token);
-            //     this.setState({logged:true});
-            //     this.props.history.push(
-            //         {
-            //             pathname: "/medici"
-            //         }
-            //     )
-            //
-            //
-            // }
             )
             .catch(function (error) {
                 console.log(error);

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
-import CardColumns from "reactstrap/es/CardColumns";
+    CardTitle, CardSubtitle } from 'reactstrap';
 import t from './locale';
 
 const Medic = (props) => {
@@ -10,7 +9,7 @@ const Medic = (props) => {
 
         <Card className="hospital-box" id={"doc"}>
             <div className={"img-wrapper"}>
-            <CardImg top width="100%" src={"data:image/png;base64,"+props.pozaProfil} alt="Card image cap" />
+            <CardImg top width="100%" src={props.pozaProfil} alt="Card image cap" />
                 <CardTitle className={"img-overlay"}><b>{props.nume}</b></CardTitle>
             </div>
             <CardBody>

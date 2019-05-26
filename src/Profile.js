@@ -1,9 +1,8 @@
 import * as React from "react";
 
-import {Button, Form, FormGroup} from "reactstrap";
 import Navbar from "./Navbar";
 import Cookies from "universal-cookie";
-// import "./Login.css";
+
 import {Multiselect} from "multiselect-dropdown-react";
 
 const data = [{

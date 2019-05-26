@@ -1,8 +1,6 @@
 import * as React from "react";
-import Jumbotron from "./Jumbotron";
 
 import UnitatiMedicale from "./UnitatiMedicale";
-import Media from "reactstrap/es/Media";
 
 class Page extends React.Component {
     render() {

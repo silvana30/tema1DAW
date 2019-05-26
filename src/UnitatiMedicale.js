@@ -1,12 +1,9 @@
 import * as React from "react";
 import Navbar from "./Navbar";
-import Jumbotron from "./Jumbotron";
-import Page from "./Page";
-import * as ReactDOM from "react-router-dom";
-import t from './locale';
 
 import Item from "./Item";
-import Cookies from "universal-cookie";
+import Chart from 'react-apexcharts'
+
 
 
 class UnitatiMedicale extends React.Component {
@@ -15,13 +12,31 @@ class UnitatiMedicale extends React.Component {
         this.state = {
             currentPage: 'unitatiMedicale',
             brand: 'ReactStrap',
-            hospitals: {}
+            hospitals: {},
+            doctors:{},
+            series2: [{
+                name: 'rating',
+                data: []  //rating per spital
+            }],
+            lista: [],
+            listaVal: [],
+            options2: {
+                chart: {
+                    id: 'apexchart-example'
+                },
+                xaxis: {
+                    categories: [] //nume spitale
+                }
+            }
         };
 
         this.getHospitals = this.getHospitals.bind(this);
         this.handleReq = this.handleReq.bind(this);
-        this.getHospitals();
+        this.getRatings = this.getRatings.bind(this);
+        this.updateData = this.updateData.bind(this);
+        this.updateState=this.updateState.bind(this);
 
+        this.getHospitals();
     };
 
     handleChange = (page) => {
@@ -30,27 +45,59 @@ class UnitatiMedicale extends React.Component {
             brand: 'ReactStrap'
         });
     };
-
-    handleReq(response) {
-        console.log(response);
-        this.setState({hospitals: response.data});
-        console.log(this.state);
+    async getRatings(idHospital) {
+        console.log("Get ratings for", idHospital);
+        const response = await fetch('http://localhost/larapi-master/public/rating', {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: idHospital
+                })
+            });
+        const res = await response.json();
+        console.log("Update state for", idHospital, "from", this.state.listaVal);
+        // this.state.listaVal.push(res.doctor);
+        let listaVal = this.state.listaVal;
+        listaVal.push(res.doctor);
+        this.setState({listaVal: listaVal});
+        this.updateData();
+        this.updateState();
+    }
+    updateData() {
+        // var series2 = {...this.state.series2};
+        let series2 = this.state.series2;
+        series2[0].data = this.state.listaVal;
+        this.setState({series2 : series2});
     }
 
+    handleReq(response) {
+        this.setState({hospitals: response.data});
+        for(let hospital of response.data.medical_units){
+            // this.state.lista.push(hospital.nume);
+            let hospitalsList = this.state.lista;
+            hospitalsList.push(hospital.nume);
+            this.setState({lista: hospitalsList});
+            this.getRatings(hospital.id);
+        }
+    }
+
+    updateState() {
+        // var options2 = {...this.state.options2};
+        let options2 = this.state.options2;
+        options2.xaxis.categories = this.state.lista;
+        this.setState({options2});
+    }
 
     getHospitals() {
         const axios = require('axios');
-
         axios.get('http://localhost/larapi-master/public/medicalUnits')
             .then(this.handleReq)
-            // .then(function (response) {
-            // console.log(response);
-            // this.handleReq(response);
-            // })
             .catch(function (error) {
                 console.log(error);
             });
-
     }
 
     handleChangeBrand = (name) => {
@@ -62,22 +109,29 @@ class UnitatiMedicale extends React.Component {
         return {data: this.props.data};
     };
 
-
     render() {
+        // console.log("Render");
         var {jumboTitle, jumboText, jumboBtn} = this.props,
             {brand, currentPage, hospitals} = this.state;
         // var hospitals = require('./unitatiMedicale.json');
         // console.log('hospitals:' + JSON.stringify(hospitals.unitatiMedicale));
         // var hospitals = {};
-        console.log("asf", this.state.hospitals);
+        let chart = null;
+
+        if (this.state.series2 && this.state.series2[0].data.length > 0){
+            chart = (
+                <div id={"container-tabel"}>
+                    <Chart options={this.state.options2} series={this.state.series2} type={"histogram"} width={1000} height={320}/>
+                </div>
+            );
+        }
+        // console.log("State", this.state);
         if (this.state.hospitals.medical_units) {
-            console.log("1111");
             return (
-                <div class={"doctors"}>
+                <div className={"doctors"}>
                     <Navbar currentPage={currentPage} brand={brand} change={this.handleChange}/>
                     {/*<Page currentPage={currentPage}/>*/}
                     <div className={"med-units"} id={"hospitals"}>
-                        {console.log("==========", this.state.hospitals)}
                         {hospitals.medical_units.map((element, index) => {
 
                                 return (
@@ -93,10 +147,12 @@ class UnitatiMedicale extends React.Component {
                             }
                         )}
                     </div>
+                    {/*<MapDemo/>*/}
+                    {chart}
+
                 </div>
             )
         } else {
-            console.log("222");
             return (<div>Loading data</div>);
         }
     }

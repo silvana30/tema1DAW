@@ -5,6 +5,9 @@ import Cookies from 'universal-cookie';
 
 import t from './locale';
 
+// const cookies = new Cookies();
+// cookies.set('language', 'EN');
+// console.log(cookies.get('language'));
 
 function setRO() {
     // cookies.set('language', 'RO');
@@ -20,14 +23,20 @@ function setEN() {
     window.location.reload();
 }
 
-class Navbar extends React.Component {
+class AdminNavbar extends React.Component {
     state = {
         navCollapsed: true
     }
 
     constructor(props) {
         super(props);
-        this.logout = this.logout.bind(this);
+
+
+        this.logout=this.logout.bind(this);
+    }
+
+    _onToggleNav = () => {
+        this.setState({navCollapsed: !this.state.navCollapsed})
     }
 
 
@@ -54,32 +63,20 @@ class Navbar extends React.Component {
                     // var st=this;
                     // st.handleReq();
                     window.location.reload();
+                this.props.history.push(
+                    {
+                        pathname: "/login"
+                    }
+                )
                 }
             )
             .catch(function (error) {
                 console.log(error);
             });
-        // this.props.history.push(
-        //     {
-        //         pathname: "/login"
-        //     }
-        // )
     }
 
     render() {
         const {navCollapsed} = this.state;
-
-        const cookies = new Cookies();
-        const token = cookies.get('token');
-        var btnLog;
-        if (token) {
-            btnLog = <button onClick={this.logout}>Logout</button>
-
-        } else {
-            btnLog = <a className='navbar-brand' href='/login'> Sign In</a>
-        }
-        // var btnLog = (this.props.logged) ? (<a className='navbar-brand' href='/login'> Log Out</a>) : (
-        //     <a className='navbar-brand' href='/login'> Sign In</a>);
 
         return (
             <nav className='navbar navbar-default'>
@@ -87,36 +84,25 @@ class Navbar extends React.Component {
 
                     <div>
                         <a className='navbar-brand' href='/'> <i className="fa fa-home"></i> {t('home')}</a>
-                        <a className='navbar-brand' href='/unitatiMedicale'><i
-                            className={"fa fa-hospital-o"}></i> {t('medUnits')}</a>
-                        <a className='navbar-brand' href='/medici'><i className={"fa fa-user-md"}></i> {t('doctors')}
+                        <a className='navbar-brand' href='/adminUnitatiMedicale'> Management medical units</a>
+                        <a className='navbar-brand' href='/adminDoctors'> Management doctors
+                        </a>
+                        <a className='navbar-brand' href='/adminUsers'> Management users
                         </a>
 
 
                     </div>
                     <div>
-                        <a className='navbar-brand' href='/profile'> My Profile</a>
 
-                        {/*<a className='navbar-brand' href='/login'> Sign In</a>*/}
-                        {btnLog}
-                        {/*<button onClick={this.logout}>Logout</button>*/}
 
-                        <Button color="secondary" id={"lang"} onClick={setRO}><img
+                        <button onClick={this.logout}>Logout</button>
+
+                        <Button color="secondary" id={"lang"} onClick={setRO} ><img
                             src="https://img.icons8.com/color/48/000000/romania.png"/></Button>{' '}
                         <Button color="secondary" id={"lang2"} onClick={setEN}><img
                             src="https://img.icons8.com/color/48/000000/great-britain.png"/></Button>{' '}
                     </div>
-                    {/*<button*/}
-                    {/*aria-expanded='false'*/}
-                    {/*className='navbar-toggle collapsed'*/}
-                    {/*onClick={this._onToggleNav}*/}
-                    {/*type='button'*/}
-                    {/*>*/}
-                    {/*<span className='sr-only'>Toggle navigation</span>*/}
-                    {/*<span className='icon-bar'></span>*/}
-                    {/*<span className='icon-bar'></span>*/}
-                    {/*<span className='icon-bar'></span>*/}
-                    {/*</button>*/}
+
                 </div>
                 <div
                     className={(navCollapsed ? 'collapse' : '') + ' navbar-collapse'}
@@ -128,4 +114,4 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar;
+export default AdminNavbar;

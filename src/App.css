@@ -19,10 +19,12 @@
     font-size: calc(10px + 2vmin);
     color: white;
 }
-.navbar-header{
+
+.navbar-header {
     display: contents;
     justify-content: space-between;
 }
+
 .App-link {
     color: #61dafb;
 }
@@ -59,6 +61,28 @@
     background-color: #e7e7e7;
 }
 
+#map {
+    /*width: 400px;*/
+    /*height: 400px;*/
+    top: 0;
+    position: fixed;
+}
+
+#container-map {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+#container-tabel {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
 .hospital-box {
     /*border: solid;*/
     width: 20vw;
@@ -71,16 +95,31 @@
     justify-content: space-between;
 
 }
-#doc{
+
+.user-box {
+    /*border: solid;*/
+    width: 20vw;
+    height: 20vh;
+    padding: 10px;
+    margin: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#doc {
     height: 42vh;
 }
+
 #btn-details {
     /*width: 318vw;*/
     /*height: 180vh;*/
     background-color: darkred;
 }
 
-#btn-details:hover{
+#btn-details:hover {
     background-color: dimgrey;
 }
 
@@ -115,14 +154,17 @@
     right: 0;
     padding: 5px;
 }
+
 .card-img-top {
     object-fit: contain;
     height: 175px;
 }
-.carousel-item{
+
+.carousel-item {
     height: 92vh;
     display: flex;
 }
+
 #carousel-wrapper {
     width: 55%;
     margin-left: 23%;
@@ -139,13 +181,15 @@
     display: contents;
 }
 
-#lang,#lang2{display: contents;}
+#lang, #lang2 {
+    display: contents;
+}
 
-.doctors{
+.doctors {
     background: #d3d3d352;
 }
 
-#hospitals{
+#hospitals {
     background: url("https://images.pexels.com/photos/943630/pexels-photo-943630.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     /* Full height */
     height: 100%;
@@ -155,12 +199,14 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-#card-h{
+
+#card-h {
     opacity: 0.8;
     border-radius: 1em;
 
 }
-.carousel-caption h3{
+
+.carousel-caption h3 {
     -webkit-text-fill-color: white; /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
@@ -192,7 +238,7 @@
         border-radius: .8rem;
     }
 
-    .Login Button{
+    .Login Button {
         max-width: 200px;
         background-color: darkred;
     }
@@ -223,7 +269,7 @@
         border-radius: .8rem;
     }
 
-    .Register Button{
+    .Register Button {
         max-width: 200px;
         background-color: darkred;
     }
@@ -238,7 +284,6 @@
         background-size: cover;
         height: -webkit-fill-available;
     }
-
 
 
 }
@@ -258,11 +303,11 @@
     border-radius: .8rem;
 }
 
-#files{
+#files {
     visibility: hidden;
 }
 
-#avatar{
+#avatar {
     height: 200px;
 
 }
