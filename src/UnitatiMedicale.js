@@ -33,11 +33,15 @@ class UnitatiMedicale extends React.Component {
         this.getHospitals = this.getHospitals.bind(this);
         this.handleReq = this.handleReq.bind(this);
         this.getRatings = this.getRatings.bind(this);
-        this.updateData = this.updateData.bind(this);
-        this.updateState=this.updateState.bind(this);
+        // this.updateData = this.updateData.bind(this);
+        // this.updateState=this.updateState.bind(this);
 
-        this.getHospitals();
+
     };
+
+    componentDidMount() {
+        this.getHospitals();
+    }
 
     handleChange = (page) => {
         this.setState({
@@ -45,60 +49,118 @@ class UnitatiMedicale extends React.Component {
             brand: 'ReactStrap'
         });
     };
-    async getRatings(idHospital) {
-        console.log("Get ratings for", idHospital);
-        const response = await fetch('http://localhost/larapi-master/public/rating', {
+    // async getRatings(idHospital) {
+    //     console.log("Get ratings for", idHospital);
+    //     const response = await fetch('http://localhost/larapi-master/public/rating', {
+    //             method: 'PUT',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 id: idHospital
+    //             })
+    //         });
+    //     const res = await response.json();
+    //     console.log("Update state for", idHospital, "from", this.state.listaVal);
+    //     // this.state.listaVal.push(res.doctor);
+    //     let listaVal = this.state.listaVal;
+    //     listaVal.push(res.doctor);
+    //     this.setState({listaVal: listaVal});
+    //     this.updateData();
+    //     this.updateState();
+    // }
+    // updateData() {
+    //     // var series2 = {...this.state.series2};
+    //     let series2 = this.state.series2;
+    //     series2[0].data = this.state.listaVal;
+    //     this.setState({series2 : series2});
+    // }
+    //
+    // handleReq(response) {
+    //     this.setState({hospitals: response.data});
+    //     for(let hospital of response.data.medical_units){
+    //         // this.state.lista.push(hospital.nume);
+    //         let hospitalsList = this.state.lista;
+    //         hospitalsList.push(hospital.nume);
+    //         this.setState({lista: hospitalsList});
+    //         this.getRatings(hospital.id);
+    //     }
+    // }
+    //
+    // updateState() {
+    //     // var options2 = {...this.state.options2};
+    //     let options2 = this.state.options2;
+    //     options2.xaxis.categories = this.state.lista;
+    //     this.setState({options2});
+    // }
+    //
+    // getHospitals() {
+    //     const axios = require('axios');
+    //     axios.get('http://localhost/larapi-master/public/medicalUnits')
+    //         .then(this.handleReq)
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+    // }
+
+    async getRatings(index){
+        if (index < this.state.hospitals.medical_units.length){
+            const response = await fetch('http://localhost/larapi-master/public/rating', {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id: idHospital
+                    id: this.state.hospitals.medical_units[index].id
                 })
             });
-        const res = await response.json();
-        console.log("Update state for", idHospital, "from", this.state.listaVal);
-        // this.state.listaVal.push(res.doctor);
-        let listaVal = this.state.listaVal;
-        listaVal.push(res.doctor);
-        this.setState({listaVal: listaVal});
-        this.updateData();
-        this.updateState();
-    }
-    updateData() {
-        // var series2 = {...this.state.series2};
-        let series2 = this.state.series2;
-        series2[0].data = this.state.listaVal;
-        this.setState({series2 : series2});
-    }
+            const res = await response.json();
 
-    handleReq(response) {
-        this.setState({hospitals: response.data});
-        for(let hospital of response.data.medical_units){
-            // this.state.lista.push(hospital.nume);
-            let hospitalsList = this.state.lista;
-            hospitalsList.push(hospital.nume);
-            this.setState({lista: hospitalsList});
-            this.getRatings(hospital.id);
+            let listaVal = this.state.listaVal;
+            listaVal.push(res.doctor);
+
+            let series2 = this.state.series2;
+            series2[0].data = listaVal;
+
+            this.setState({
+                listaVal: listaVal,
+                series2: series2
+            });
+
+            if (index + 1 < this.state.hospitals.medical_units.length){
+                this.getRatings(index + 1);
+            }
         }
     }
 
-    updateState() {
-        // var options2 = {...this.state.options2};
-        let options2 = this.state.options2;
-        options2.xaxis.categories = this.state.lista;
-        this.setState({options2});
+    handleReq(response){
+        this.setState({hospitals: response.data});
+        let medical_units = response.data.medical_units;
+        if (medical_units.length > 0){
+            let listaNume = medical_units.map(function(hospital){
+                console.log(hospital);
+                return hospital.nume;
+            });
+            let options2 = this.state.options2;
+            options2.xaxis.categories = listaNume;
+            console.log(options2);
+            this.setState({
+                lista: listaNume,
+                options2: options2
+            });
+            this.getRatings(0);
+        }
     }
 
-    getHospitals() {
+    getHospitals(){
         const axios = require('axios');
         axios.get('http://localhost/larapi-master/public/medicalUnits')
             .then(this.handleReq)
-            .catch(function (error) {
-                console.log(error);
-            });
+            .catch(function (error) { console.log(error); });
     }
+
 
     handleChangeBrand = (name) => {
         this.setState({
@@ -110,7 +172,7 @@ class UnitatiMedicale extends React.Component {
     };
 
     render() {
-        // console.log("Render");
+        console.log("Render", JSON.parse(JSON.stringify(this.state)));
         var {jumboTitle, jumboText, jumboBtn} = this.props,
             {brand, currentPage, hospitals} = this.state;
         // var hospitals = require('./unitatiMedicale.json');
@@ -118,7 +180,7 @@ class UnitatiMedicale extends React.Component {
         // var hospitals = {};
         let chart = null;
 
-        if (this.state.series2 && this.state.series2[0].data.length > 0){
+        if (this.state.series2 && this.state.series2[0].data.length == this.state.lista.length){
             chart = (
                 <div id={"container-tabel"}>
                     <Chart options={this.state.options2} series={this.state.series2} type={"histogram"} width={1000} height={320}/>
